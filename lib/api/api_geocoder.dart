@@ -24,4 +24,11 @@ class ApiGeocoder{
 
   }
 
+  // {"lat": 47.5456464, "lon": 1.6546546546}
+  Future<Map<String,double>?> getCoordinatesFromAddresse({required String ville}) async{
+
+  }
+
+
+
 }

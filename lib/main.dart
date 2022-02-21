@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:meteo/api/api_geocoder.dart';
 import 'package:meteo/models/device_info.dart';
 import 'package:meteo/pages/page_home.dart';
 
@@ -28,9 +29,18 @@ void main() async{
   }
 
   _locationData = await location.getLocation();
-  print("Location = ${_locationData.latitude},${_locationData.longitude}");
-  DeviceInfo.locationData = _locationData;
-  runApp(const MyApp());
+  if(_locationData.latitude != null && _locationData.longitude != null){
+    print("Location = ${_locationData.latitude},${_locationData.longitude}");
+    ApiGeocoder geocoder = ApiGeocoder();
+    DeviceInfo.ville = await geocoder.getAddressFromCoordinates(latitude: _locationData.latitude!, longitude: _locationData.longitude!);
+    DeviceInfo.locationData = _locationData;
+
+    runApp(const MyApp());
+  }
+
+
+
+
 }
 
 class MyApp extends StatelessWidget {

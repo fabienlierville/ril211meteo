@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meteo/models/device_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PageHome extends StatefulWidget {
@@ -27,6 +28,7 @@ class _PageHomeState extends State<PageHome> {
         child: ElevatedButton(
           child: Text("Ajouter Ville"),
           onPressed: (){
+            print(DeviceInfo.ville);
             print(villes);
             ajouter("Paris");
             ajouter("Lyon");
