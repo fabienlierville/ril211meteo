@@ -1,7 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
+import 'package:meteo/models/device_info.dart';
 import 'package:meteo/pages/page_home.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Location location = Location();
+
+  bool _serviceEnabled;
+  PermissionStatus _permissionGranted;
+  LocationData _locationData;
+
+  _serviceEnabled = await location.serviceEnabled();
+  if (!_serviceEnabled) {
+    _serviceEnabled = await location.requestService();
+    if (!_serviceEnabled) {
+      return;
+    }
+  }
+
+  _permissionGranted = await location.hasPermission();
+  if (_permissionGranted == PermissionStatus.denied) {
+    _permissionGranted = await location.requestPermission();
+    if (_permissionGranted != PermissionStatus.granted) {
+      return;
+    }
+  }
+
+  _locationData = await location.getLocation();
+  print("Location = ${_locationData.latitude},${_locationData.longitude}");
+  DeviceInfo.locationData = _locationData;
   runApp(const MyApp());
 }
 
