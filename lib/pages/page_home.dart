@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meteo/api/api_geocoder.dart';
 import 'package:meteo/models/device_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,13 +28,17 @@ class _PageHomeState extends State<PageHome> {
       body: Center(
         child: ElevatedButton(
           child: Text("Ajouter Ville"),
-          onPressed: (){
+          onPressed: () async{
             print(DeviceInfo.ville);
             print(villes);
             ajouter("Paris");
             ajouter("Lyon");
             supprimer("Rouen");
             print(villes);
+            ApiGeocoder geocoder = ApiGeocoder();
+            Map<String,double>? coordinates = await geocoder.getCoordinatesFromAddresse(ville: "bangkok");
+            print(coordinates);
+
           },
         ),
       ),

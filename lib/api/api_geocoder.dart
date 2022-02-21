@@ -26,7 +26,22 @@ class ApiGeocoder{
 
   // {"lat": 47.5456464, "lon": 1.6546546546}
   Future<Map<String,double>?> getCoordinatesFromAddresse({required String ville}) async{
+    http.Request request = http.Request(
+        'GET',
+        Uri.parse("${baseURl}direct?q=${ville}&limit=1&appid=${apiKey}")
+    );
 
+    http.StreamedResponse streamedResponse = await request.send();
+
+    if(streamedResponse.statusCode == 200){
+      String data = await streamedResponse.stream.bytesToString();
+      List<dynamic> json = jsonDecode(data);
+      return {
+        "lat": json.first["lat"],
+        "lon": json.first["lon"],
+      };
+    }
+    return null;
   }
 
 
