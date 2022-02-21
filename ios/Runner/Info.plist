@@ -4,6 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+    	<string>Accès pour récupérer Météo</string>
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>Accès pour récupérer Météo</string>
+        <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+        <string>Accès pour récupérer Météo</string>
 	<key>CFBundleDisplayName</key>
 	<string>Meteo</string>
 	<key>CFBundleExecutable</key>
