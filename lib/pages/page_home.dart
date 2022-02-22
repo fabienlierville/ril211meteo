@@ -35,10 +35,10 @@ class _PageHomeState extends State<PageHome> {
                     children: [
                       Text("Villes", textScaleFactor: 3,style: TextStyle(color: Colors.white),),
                       ElevatedButton(
-                          onPressed: null,
+                          onPressed: ajoutVille,
                           child: Text("Ajouter une ville",style: TextStyle(color: Colors.blue),),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white)
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
                         ),
                       )
                     ],
@@ -111,4 +111,39 @@ class _PageHomeState extends State<PageHome> {
     await prefs.setStringList("villes", villes);
     obtenir();
   }
+
+  Future<void> ajoutVille(){
+    String? villeSaisie;
+
+    return showDialog(
+        context: context,
+        builder: (context){
+          return SimpleDialog(
+            contentPadding: EdgeInsets.all(20),
+            title: Text("Ajouter Ville"),
+            children: [
+              TextField(
+                onChanged: (String value){
+                  villeSaisie = value;
+                },
+              ),
+              ElevatedButton(
+                  onPressed: (){
+                    if(villeSaisie!=null){
+                      ajouter(villeSaisie!);
+                      Navigator.pop(context);
+                    }
+
+                  },
+                  child: Text("Valider")
+              ),
+            ],
+          );
+        }
+    );
+
+
+
+  }
+
 }
