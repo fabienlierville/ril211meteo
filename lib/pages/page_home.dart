@@ -25,6 +25,45 @@ class _PageHomeState extends State<PageHome> {
       appBar: AppBar(
         title: Text("Météo"),
       ),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.blue,
+          child: Column(
+            children: [
+              DrawerHeader(
+                  child: Column(
+                    children: [
+                      Text("Villes", textScaleFactor: 3,style: TextStyle(color: Colors.white),),
+                      ElevatedButton(
+                          onPressed: null,
+                          child: Text("Ajouter une ville",style: TextStyle(color: Colors.blue),),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white)
+                        ),
+                      )
+                    ],
+                  )
+
+              ),
+              ListTile(
+                title: Text(DeviceInfo.ville ?? "Ville Inconnue"),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: villes.length,
+                  itemBuilder: (context,index){
+                    String ville = villes[index];
+                    return ListTile(
+                      title: Text(ville),
+                    );
+                  },
+                ),
+              )
+              ,
+            ],
+          ),
+        ),
+      ),
       body: Center(
         child: ElevatedButton(
           child: Text("Ajouter Ville"),

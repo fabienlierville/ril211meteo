@@ -37,10 +37,15 @@ dependencies:
   shared_preferences: ^2.0.13
   location: ^4.2.0
   http: ^0.13.4
+  freezed_annotation: any
+  json_annotation: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: any
+  freezed: any
+  json_serializable:  any
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
