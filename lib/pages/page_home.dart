@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meteo/api/api_geocoder.dart';
 import 'package:meteo/models/device_info.dart';
+import 'package:meteo/models/weather.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PageHome extends StatefulWidget {
@@ -46,7 +47,9 @@ class _PageHomeState extends State<PageHome> {
 
               ),
               ListTile(
-                onTap: null, //TODO : Appel API afficher en console
+                onTap: (){
+                  getMeteo(DeviceInfo.ville ?? "Paris");
+                },
                 title: Text(DeviceInfo.ville ?? "Ville Inconnue"),
               ),
               Expanded(
@@ -55,7 +58,9 @@ class _PageHomeState extends State<PageHome> {
                   itemBuilder: (context,index){
                     String ville = villes[index];
                     return ListTile(
-                      onTap: null,
+                      onTap: (){
+                        getMeteo(ville);
+                      },
                       title: Text(ville),
                       trailing: IconButton(
                         icon: Icon(Icons.delete),
@@ -154,4 +159,11 @@ class _PageHomeState extends State<PageHome> {
 
   }
 
+  Future<void> getMeteo(String ville) async{
+    // Apple API pour avoir le JSON (à créer)
+    // weather = Weather.fromJson(json)
+    setState(() {
+      // Mon objet Weather de ma classe = weather
+    });
+  }
 }
