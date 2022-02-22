@@ -46,6 +46,7 @@ class _PageHomeState extends State<PageHome> {
 
               ),
               ListTile(
+                onTap: null, //TODO : Appel API afficher en console
                 title: Text(DeviceInfo.ville ?? "Ville Inconnue"),
               ),
               Expanded(
@@ -54,7 +55,14 @@ class _PageHomeState extends State<PageHome> {
                   itemBuilder: (context,index){
                     String ville = villes[index];
                     return ListTile(
+                      onTap: null,
                       title: Text(ville),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: (){
+                          supprimer(ville);
+                        },
+                      ),
                     );
                   },
                 ),
