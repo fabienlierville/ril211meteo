@@ -78,23 +78,19 @@ class _PageHomeState extends State<PageHome> {
           ),
         ),
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text("Ajouter Ville"),
-          onPressed: () async{
-            print(DeviceInfo.ville);
-            print(villes);
-            ajouter("Paris");
-            ajouter("Lyon");
-            supprimer("Rouen");
-            print(villes);
-            ApiGeocoder geocoder = ApiGeocoder();
-            Map<String,double>? coordinates = await geocoder.getCoordinatesFromAddresse(ville: "bangkok");
-            print(coordinates);
-
-          },
-        ),
+      body: (weather == null)
+          ? Center(
+        child: Text("Pas de météo dispo"),
+      )
+          : Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(weather!.getMainWeatherImage()),
+                fit: BoxFit.cover)),
       ),
+
     );
   }
 

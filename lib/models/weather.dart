@@ -15,6 +15,7 @@ String weatherToJson(Weather data) => json.encode(data.toJson());
 
 @freezed
 class Weather with _$Weather {
+
   const factory Weather({
     required Clouds coord,
     required List<WeatherElement> weather,
@@ -31,8 +32,27 @@ class Weather with _$Weather {
     required int cod,
   }) = _Weather;
 
+  const Weather._();
+  String getMainWeatherImage(){
+    if(weather[0].icon.contains("n.")){
+      return "assets/img/n.jpg";
+    }else{
+      if(weather[0].icon.contains("01") || weather[0].icon.contains("02") || weather[0].icon.contains("03")){
+        return "assets/img/d1.jpg";
+      }else{
+        return "assets/img/d2.jpg";
+      }
+    }
+  }
+  String getIconeImage(){
+    String logo = weather[0].icon.replaceAll("d", "").replaceAll("n", "");
+    return "assets/img/$logo.png";
+  }
+
+
   factory Weather.fromJson(Map<String, dynamic> json) => _$WeatherFromJson(json);
 }
+
 
 @freezed
 class Clouds with _$Clouds {

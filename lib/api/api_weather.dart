@@ -17,11 +17,10 @@ class ApiWeather{
     http.StreamedResponse streamedResponse = await request.send();
 
     if(streamedResponse.statusCode == 200){
-      String data = await streamedResponse.stream.bytesToString();
-      Map json = jsonDecode(data);
+      String body = await streamedResponse.stream.bytesToString();
       return {
         "code": 200,
-        "json": json,
+        "json": jsonDecode(body),
       };
     }
     return null;
