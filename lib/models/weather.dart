@@ -50,8 +50,6 @@ class Main with _$Main {
     required double temp_max,
     required int pressure,
     required int humidity,
-    required int sea_level,
-    required int grnd_level,
   }) = _Main;
 
   factory Main.fromJson(Map<String, dynamic> json) => _$MainFromJson(json);

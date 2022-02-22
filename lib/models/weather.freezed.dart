@@ -594,9 +594,7 @@ class _$MainTearOff {
       required double temp_min,
       required double temp_max,
       required int pressure,
-      required int humidity,
-      required int sea_level,
-      required int grnd_level}) {
+      required int humidity}) {
     return _Main(
       temp: temp,
       feels_like: feels_like,
@@ -604,8 +602,6 @@ class _$MainTearOff {
       temp_max: temp_max,
       pressure: pressure,
       humidity: humidity,
-      sea_level: sea_level,
-      grnd_level: grnd_level,
     );
   }
 
@@ -625,8 +621,6 @@ mixin _$Main {
   double get temp_max => throw _privateConstructorUsedError;
   int get pressure => throw _privateConstructorUsedError;
   int get humidity => throw _privateConstructorUsedError;
-  int get sea_level => throw _privateConstructorUsedError;
-  int get grnd_level => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -643,9 +637,7 @@ abstract class $MainCopyWith<$Res> {
       double temp_min,
       double temp_max,
       int pressure,
-      int humidity,
-      int sea_level,
-      int grnd_level});
+      int humidity});
 }
 
 /// @nodoc
@@ -664,8 +656,6 @@ class _$MainCopyWithImpl<$Res> implements $MainCopyWith<$Res> {
     Object? temp_max = freezed,
     Object? pressure = freezed,
     Object? humidity = freezed,
-    Object? sea_level = freezed,
-    Object? grnd_level = freezed,
   }) {
     return _then(_value.copyWith(
       temp: temp == freezed
@@ -692,14 +682,6 @@ class _$MainCopyWithImpl<$Res> implements $MainCopyWith<$Res> {
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
               as int,
-      sea_level: sea_level == freezed
-          ? _value.sea_level
-          : sea_level // ignore: cast_nullable_to_non_nullable
-              as int,
-      grnd_level: grnd_level == freezed
-          ? _value.grnd_level
-          : grnd_level // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -715,9 +697,7 @@ abstract class _$MainCopyWith<$Res> implements $MainCopyWith<$Res> {
       double temp_min,
       double temp_max,
       int pressure,
-      int humidity,
-      int sea_level,
-      int grnd_level});
+      int humidity});
 }
 
 /// @nodoc
@@ -737,8 +717,6 @@ class __$MainCopyWithImpl<$Res> extends _$MainCopyWithImpl<$Res>
     Object? temp_max = freezed,
     Object? pressure = freezed,
     Object? humidity = freezed,
-    Object? sea_level = freezed,
-    Object? grnd_level = freezed,
   }) {
     return _then(_Main(
       temp: temp == freezed
@@ -765,14 +743,6 @@ class __$MainCopyWithImpl<$Res> extends _$MainCopyWithImpl<$Res>
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
               as int,
-      sea_level: sea_level == freezed
-          ? _value.sea_level
-          : sea_level // ignore: cast_nullable_to_non_nullable
-              as int,
-      grnd_level: grnd_level == freezed
-          ? _value.grnd_level
-          : grnd_level // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -786,9 +756,7 @@ class _$_Main implements _Main {
       required this.temp_min,
       required this.temp_max,
       required this.pressure,
-      required this.humidity,
-      required this.sea_level,
-      required this.grnd_level});
+      required this.humidity});
 
   factory _$_Main.fromJson(Map<String, dynamic> json) => _$$_MainFromJson(json);
 
@@ -804,14 +772,10 @@ class _$_Main implements _Main {
   final int pressure;
   @override
   final int humidity;
-  @override
-  final int sea_level;
-  @override
-  final int grnd_level;
 
   @override
   String toString() {
-    return 'Main(temp: $temp, feels_like: $feels_like, temp_min: $temp_min, temp_max: $temp_max, pressure: $pressure, humidity: $humidity, sea_level: $sea_level, grnd_level: $grnd_level)';
+    return 'Main(temp: $temp, feels_like: $feels_like, temp_min: $temp_min, temp_max: $temp_max, pressure: $pressure, humidity: $humidity)';
   }
 
   @override
@@ -825,10 +789,7 @@ class _$_Main implements _Main {
             const DeepCollectionEquality().equals(other.temp_min, temp_min) &&
             const DeepCollectionEquality().equals(other.temp_max, temp_max) &&
             const DeepCollectionEquality().equals(other.pressure, pressure) &&
-            const DeepCollectionEquality().equals(other.humidity, humidity) &&
-            const DeepCollectionEquality().equals(other.sea_level, sea_level) &&
-            const DeepCollectionEquality()
-                .equals(other.grnd_level, grnd_level));
+            const DeepCollectionEquality().equals(other.humidity, humidity));
   }
 
   @override
@@ -839,9 +800,7 @@ class _$_Main implements _Main {
       const DeepCollectionEquality().hash(temp_min),
       const DeepCollectionEquality().hash(temp_max),
       const DeepCollectionEquality().hash(pressure),
-      const DeepCollectionEquality().hash(humidity),
-      const DeepCollectionEquality().hash(sea_level),
-      const DeepCollectionEquality().hash(grnd_level));
+      const DeepCollectionEquality().hash(humidity));
 
   @JsonKey(ignore: true)
   @override
@@ -861,9 +820,7 @@ abstract class _Main implements Main {
       required double temp_min,
       required double temp_max,
       required int pressure,
-      required int humidity,
-      required int sea_level,
-      required int grnd_level}) = _$_Main;
+      required int humidity}) = _$_Main;
 
   factory _Main.fromJson(Map<String, dynamic> json) = _$_Main.fromJson;
 
@@ -879,10 +836,6 @@ abstract class _Main implements Main {
   int get pressure;
   @override
   int get humidity;
-  @override
-  int get sea_level;
-  @override
-  int get grnd_level;
   @override
   @JsonKey(ignore: true)
   _$MainCopyWith<_Main> get copyWith => throw _privateConstructorUsedError;

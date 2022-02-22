@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meteo/api/api_geocoder.dart';
+import 'package:meteo/api/api_weather.dart';
 import 'package:meteo/models/device_info.dart';
 import 'package:meteo/models/weather.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,7 +14,7 @@ class PageHome extends StatefulWidget {
 
 class _PageHomeState extends State<PageHome> {
   List<String> villes = [];
-
+  Weather? weather;
   @override
   void initState() {
     obtenir();
@@ -160,6 +161,21 @@ class _PageHomeState extends State<PageHome> {
   }
 
   Future<void> getMeteo(String ville) async{
+    // Récupère Lat/Long
+    ApiGeocoder geocoder = ApiGeocoder();
+    Map<String,double>? coordinates = await geocoder.getCoordinatesFromAddresse(ville: ville);
+    if(coordinates != null){
+      ApiWeather apiWeather = ApiWeather();
+      Map<String,dynamic>? result = await apiWeather.getCurrentWeather(lat: coordinates["lat"]!, lon: coordinates["lon"]!);
+      if(result!=null && result["code"]==200){
+        setState(() {
+          weather = Weather.fromJson(result["json"]);
+        });
+        print(weather);
+
+      }
+
+    }
     // Apple API pour avoir le JSON (à créer)
     // weather = Weather.fromJson(json)
     setState(() {
