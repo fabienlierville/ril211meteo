@@ -34,7 +34,7 @@ class Weather with _$Weather {
 
   const Weather._();
   String getMainWeatherImage(){
-    if(weather[0].icon.contains("n.")){
+    if(weather[0].icon.contains("n")){
       return "assets/img/n.jpg";
     }else{
       if(weather[0].icon.contains("01") || weather[0].icon.contains("02") || weather[0].icon.contains("03")){
